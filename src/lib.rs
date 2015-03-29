@@ -16,7 +16,6 @@
 //! Raw FFI declarations for gexiv2.
 
 #![crate_type = "lib"]
-#![crate_name = "gexiv2-sys"]
 
 #![feature(libc)]  // TODO: Remove once stabilized.
 
