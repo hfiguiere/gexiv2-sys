@@ -17,8 +17,6 @@
 
 #![crate_type = "lib"]
 
-#![feature(libc)]  // TODO: Remove once stabilized.
-
 extern crate libc;
 
 use self::libc::{c_char, c_int, c_double, c_long};
