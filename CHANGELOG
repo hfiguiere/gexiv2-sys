@@ -1,2 +1,5 @@
+2015-03-29 - v0.1.1
+  * Switched to the crates.io version of libc (new dependency).
+
 2015-03-02 - v0.1.0
   * Initial version split off from rexiv2.
