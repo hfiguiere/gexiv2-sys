@@ -100,6 +100,9 @@ extern {
     pub fn gexiv2_metadata_get_iso_speed(this: *mut GExiv2Metadata) -> c_int;
 
     // GPS-related functions.
+    pub fn gexiv2_metadata_get_gps_longitude(this: *mut GExiv2Metadata, longitude: *mut c_double) -> bool;
+    pub fn gexiv2_metadata_get_gps_latitude(this: *mut GExiv2Metadata, latitude: *mut c_double) -> bool;
+    pub fn gexiv2_metadata_get_gps_altitude(this: *mut GExiv2Metadata, altitude: *mut c_double) -> bool;
     pub fn gexiv2_metadata_get_gps_info(this: *mut GExiv2Metadata, longitude: *mut c_double, latitude: *mut c_double, altitude: *mut c_double) -> bool;
     pub fn gexiv2_metadata_set_gps_info(this: *mut GExiv2Metadata, longitude: c_double, latitude: c_double, altitude: c_double) -> bool;
     pub fn gexiv2_metadata_delete_gps_info(this: *mut GExiv2Metadata);
