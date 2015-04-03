@@ -33,7 +33,7 @@ pub struct GExiv2Metadata;
 
 /// All the possible orientations for an image.
 #[repr(C)]
-#[derive(Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum Orientation {
     Unspecified,
     Normal,
