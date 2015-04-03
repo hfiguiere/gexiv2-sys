@@ -48,6 +48,9 @@ pub enum Orientation {
 
 #[link(name = "gexiv2")]
 extern {
+    pub fn gexiv2_get_version() -> c_int;
+    pub fn gexiv2_initialize() -> bool;
+
     // GExiv2Metadata lifecycle management.
     pub fn gexiv2_metadata_new() -> *mut GExiv2Metadata;
     pub fn gexiv2_metadata_free(this: *mut GExiv2Metadata);
