@@ -14,6 +14,13 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 //! Raw FFI declarations for gexiv2.
+//!
+//! This library provides Rust FFI declarations for the gexiv2 library, which
+//! is a GObject-based wrapper around the Exiv2 library, which provides read
+//! and write access to the Exif, XMP, and IPTC metadata in media files.
+//!
+//! Only FFI declarations are provided here; for a usable Rust library,
+//! consider the rexiv2 crate.
 
 #![crate_type = "lib"]
 
@@ -21,15 +28,20 @@ extern crate libc;
 
 use self::libc::{c_char, c_int, c_double, c_long};
 
-#[repr(C)]
-pub struct GError {
-    pub domain: u32,
-    pub code: c_int,
-    pub message: *const c_char
-}
-
+/// An opaque structure that serves as a container for a media file's metadata.
 #[repr(C)]
 pub struct GExiv2Metadata;
+
+/// Container for information about recoverable runtime errors.
+#[repr(C)]
+pub struct GError {
+    /// Part of the program from which the error originated.
+    pub domain: u32,
+    /// Identifier for the error that occurred.
+    pub code: c_int,
+    /// Human-readable description of the problem.
+    pub message: *const c_char
+}
 
 /// All the possible orientations for an image.
 #[repr(C)]
