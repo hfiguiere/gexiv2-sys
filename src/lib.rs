@@ -46,6 +46,20 @@ pub enum Orientation {
     Rotate270,
 }
 
+/// Log levels.
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum GExiv2LogLevel {
+    DEBUG,
+    INFO,
+    WARN,
+    ERROR,
+    MUTE,
+}
+
+/// Handler function that receives gexiv2 log messages and processes them as desired.
+pub type GExiv2LogHandler = extern fn(level: GExiv2LogLevel, msg: *const c_char);
+
 #[link(name = "gexiv2")]
 extern {
     pub fn gexiv2_get_version() -> c_int;
@@ -122,4 +136,12 @@ extern {
     pub fn gexiv2_metadata_register_xmp_namespace(name: *const c_char, prefix: *const c_char) -> bool;
     pub fn gexiv2_metadata_unregister_xmp_namespace(name: *const c_char) -> bool;
     pub fn gexiv2_metadata_unregister_all_xmp_namespaces();
+
+    // Logging
+    pub fn gexiv2_log_get_default_handler() -> GExiv2LogHandler;
+    pub fn gexiv2_log_get_handler() -> GExiv2LogHandler;
+    pub fn gexiv2_log_set_handler(handler: GExiv2LogHandler);
+    pub fn gexiv2_log_get_level() -> GExiv2LogLevel;
+    pub fn gexiv2_log_set_level(level: GExiv2LogLevel);
+    pub fn gexiv2_log_use_glib_logging();
 }
