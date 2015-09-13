@@ -98,20 +98,20 @@ extern {
     pub fn gexiv2_metadata_clear(this: *mut GExiv2Metadata);
     pub fn gexiv2_metadata_has_exif(this: *mut GExiv2Metadata) -> bool;
     pub fn gexiv2_metadata_clear_exif(this: *mut GExiv2Metadata);
-    pub fn gexiv2_metadata_get_exif_tags(this: *mut GExiv2Metadata) -> *const *const c_char;
+    pub fn gexiv2_metadata_get_exif_tags(this: *mut GExiv2Metadata) -> *mut *mut c_char;
     pub fn gexiv2_metadata_has_xmp(this: *mut GExiv2Metadata) -> bool;
     pub fn gexiv2_metadata_clear_xmp(this: *mut GExiv2Metadata);
-    pub fn gexiv2_metadata_get_xmp_tags(this: *mut GExiv2Metadata) -> *const *const c_char;
+    pub fn gexiv2_metadata_get_xmp_tags(this: *mut GExiv2Metadata) -> *mut *mut c_char;
     pub fn gexiv2_metadata_has_iptc(this: *mut GExiv2Metadata) -> bool;
     pub fn gexiv2_metadata_clear_iptc(this: *mut GExiv2Metadata);
-    pub fn gexiv2_metadata_get_iptc_tags(this: *mut GExiv2Metadata) -> *const *const c_char;
+    pub fn gexiv2_metadata_get_iptc_tags(this: *mut GExiv2Metadata) -> *mut *mut c_char;
 
     // Tag data getters/setters.
     pub fn gexiv2_metadata_get_tag_string(this: *mut GExiv2Metadata, tag: *const c_char) -> *const c_char;
     pub fn gexiv2_metadata_set_tag_string(this: *mut GExiv2Metadata, tag: *const c_char, value: *const c_char) -> bool;
     pub fn gexiv2_metadata_get_tag_interpreted_string(this: *mut GExiv2Metadata, tag: *const c_char) -> *const c_char;
-    pub fn gexiv2_metadata_get_tag_multiple(this: *mut GExiv2Metadata, tag: *const c_char) -> *const *const c_char;
-    pub fn gexiv2_metadata_set_tag_multiple(this: *mut GExiv2Metadata, tag: *const c_char, values: *const *const c_char) -> bool;
+    pub fn gexiv2_metadata_get_tag_multiple(this: *mut GExiv2Metadata, tag: *const c_char) -> *mut *mut c_char;
+    pub fn gexiv2_metadata_set_tag_multiple(this: *mut GExiv2Metadata, tag: *const c_char, values: *mut *const c_char) -> bool;
     pub fn gexiv2_metadata_get_tag_long(this: *mut GExiv2Metadata, tag: *const c_char) -> c_long;
     pub fn gexiv2_metadata_set_tag_long(this: *mut GExiv2Metadata, tag: *const c_char, value: c_long) -> bool;
     pub fn gexiv2_metadata_get_exif_tag_rational(this: *mut GExiv2Metadata, tag: *const c_char, nom: *mut c_int, den: *mut c_int) -> bool;
