@@ -29,8 +29,9 @@ extern crate libc;
 use self::libc::{c_char, c_int, c_double, c_long};
 
 /// An opaque structure that serves as a container for a media file's metadata.
-#[repr(C)]
-pub struct GExiv2Metadata;
+///
+/// You can only create one via [`gexiv2_metadata_new()`](fn.gexiv2_metadata_new.html).
+pub enum GExiv2Metadata {}
 
 /// Container for information about recoverable runtime errors.
 #[repr(C)]
