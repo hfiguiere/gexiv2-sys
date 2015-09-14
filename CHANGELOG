@@ -1,3 +1,7 @@
+2015-09-13 - v0.4.0
+  * Corrected mutability of some pointers (breaking change).
+  * Future-proofing representation of GExiv2Metadata against upcoming lint.
+
 2015-09-06 - v0.3.0
   * Added declarations for working with gexiv2's logging system
   * Slightly improved documentation
