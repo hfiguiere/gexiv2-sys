@@ -11,6 +11,7 @@ the `rexiv2` crate.
 version = "0.4.0"
 authors = ["Felix Crux <felixc@felixcrux.com>"]
 license = "GPL-3.0+"
+documentation = "https://felixcrux.com/files/doc/gexiv2_sys/"
 homepage = "https://github.com/felixc/gexiv2-sys"
 repository = "https://github.com/felixc/gexiv2-sys"
 keywords = ["metadata", "exif", "iptc", "xmp", "photo"]
