@@ -19,6 +19,15 @@ readme = "README.md"
 links = "gexiv2"
 build = "build.rs"
 
+include = [
+  "Cargo.toml",
+  "README.md",
+  "CHANGELOG",
+  "LICENSE",
+  "src/**/*",
+  "build.rs",
+]
+
 [dependencies]
 libc = "0.2"
 
