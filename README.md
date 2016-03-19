@@ -56,9 +56,15 @@ you can convert to a data pointer via GLib’s [`g_bytes_unref_to_data`][unref].
 This feature is disabled by default because it introduces a new dependency on
 [`glib-sys`][glib-sys], and consequently on the GLib system library.
 
+**xmp-packet-access**: If you need access to the XML-formatted XMP packet, you
+can enable this feature. It will add the `gexiv2_metadata_generate_xmp_packet`
+and `gexiv2_metadata_get_xmp_packet` calls. Enabling the feature also introduces
+a new dependency on the the [`bitflags`][bitflags] crate.
+
 [gbytes]: http://gtk-rs.org/docs/glib_sys/struct.GBytes.html
 [unref]: http://gtk-rs.org/docs/glib_sys/fn.g_bytes_unref_to_data.html
 [glib-sys]: https://crates.io/crates/glib-sys/
+[bitflags]: https://crates.io/crates/bitflags
 
 
 Contributing

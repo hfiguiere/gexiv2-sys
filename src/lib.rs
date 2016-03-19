@@ -159,6 +159,7 @@ extern {
     pub fn gexiv2_log_use_glib_logging();
 }
 
+
 #[cfg(feature = "raw-tag-access")]
 extern crate glib_sys as glib;
 
@@ -166,4 +167,32 @@ extern crate glib_sys as glib;
 #[link(name = "gexiv2")]
 extern {
     pub fn gexiv2_metadata_get_tag_raw(this: *mut ::GExiv2Metadata, tag: *const libc::c_char) -> *mut glib::GBytes;
+}
+
+
+#[cfg(feature = "xmp-packet-access")]
+#[macro_use]
+extern crate bitflags;
+
+#[cfg(feature = "xmp-packet-access")]
+/// Namespace for XMP packet formatting constants.
+pub mod xmp_packet_fmt {
+    bitflags! {
+        pub flags GExiv2XmpFormatFlags: u64 {
+            const OMIT_PACKET_WRAPPER   = 0x0010,
+            const READ_ONLY_PACKET      = 0x0020,
+            const USE_COMPACT_FORMAT    = 0x0040,
+            const INCLUDE_THUMBNAIL_PAD = 0x0100,
+            const EXACT_PACKET_LENGTH   = 0x0200,
+            const WRITE_ALIAS_COMMENTS  = 0x0400,
+            const OMIT_ALL_FORMATTING   = 0x0800,
+        }
+    }
+}
+
+#[cfg(feature = "xmp-packet-access")]
+#[link(name = "gexiv2")]
+extern {
+    pub fn gexiv2_metadata_generate_xmp_packet(this: *mut GExiv2Metadata, xmp_format_flags: libc::c_ulong, padding: u32) -> *const c_char;
+    pub fn gexiv2_metadata_get_xmp_packet(this: *mut GExiv2Metadata) -> *const c_char;
 }
