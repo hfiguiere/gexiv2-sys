@@ -1,4 +1,4 @@
-// Copyright © 2015 Felix A. Crux <felixc@felixcrux.com>
+// Copyright © 2015–2016 Felix A. Crux <felixc@felixcrux.com>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -157,4 +157,13 @@ extern {
     pub fn gexiv2_log_get_level() -> GExiv2LogLevel;
     pub fn gexiv2_log_set_level(level: GExiv2LogLevel);
     pub fn gexiv2_log_use_glib_logging();
+}
+
+#[cfg(feature = "raw-tag-access")]
+extern crate glib_sys as glib;
+
+#[cfg(feature = "raw-tag-access")]
+#[link(name = "gexiv2")]
+extern {
+    pub fn gexiv2_metadata_get_tag_raw(this: *mut ::GExiv2Metadata, tag: *const libc::c_char) -> *mut glib::GBytes;
 }

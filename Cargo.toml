@@ -30,6 +30,10 @@ include = [
 
 [dependencies]
 libc = "0.2"
+glib-sys = { version = "0.3", optional = true }
 
 [build-dependencies]
 pkg-config = "0.3"
+
+[features]
+raw-tag-access = ["glib-sys"]

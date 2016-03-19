@@ -45,6 +45,22 @@ packages, but the “dev” versions of them as well.
 [gexiv2-dl]: https://wiki.gnome.org/Projects/gexiv2/BuildingAndInstalling
 
 
+Optional Features
+-----------------
+
+**raw-tag-access**: If you need access to the raw byte values of tags, you can
+enable this feature and gain the `gexiv2_metadata_get_tag_raw` function. Note
+that the return value of this call is a GLib [`GBytes`][gbytes] object, which
+you can convert to a data pointer via GLib’s [`g_bytes_unref_to_data`][unref].
+
+This feature is disabled by default because it introduces a new dependency on
+[`glib-sys`][glib-sys], and consequently on the GLib system library.
+
+[gbytes]: http://gtk-rs.org/docs/glib_sys/struct.GBytes.html
+[unref]: http://gtk-rs.org/docs/glib_sys/fn.g_bytes_unref_to_data.html
+[glib-sys]: https://crates.io/crates/glib-sys/
+
+
 Contributing
 ------------
 
@@ -55,6 +71,7 @@ By contributing, you are agreeing to make your contribution available under the
 same license terms as the rest of the project.
 
 [pgp-key]: http://hkps.pool.sks-keyservers.net/pks/lookup?op=vindex&search=0x8569B6311EE485F8
+
 
 Copyright & License
 -------------------
