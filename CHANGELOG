@@ -1,3 +1,8 @@
+2016-03-19 - v0.6.0
+  * Fixed FFI declarations from using Rust bools to c_ints (breaking change).
+  * Added optional support for accessing the XML XMP packet.
+  * Added optional support for reading raw tag values.
+
 2015-11-09 - v0.5.0
   * Updated libc dependency version to 0.2.
 
