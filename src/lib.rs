@@ -76,52 +76,52 @@ pub type GExiv2LogHandler = extern fn(level: GExiv2LogLevel, msg: *const c_char)
 #[link(name = "gexiv2")]
 extern {
     pub fn gexiv2_get_version() -> c_int;
-    pub fn gexiv2_initialize() -> bool;
+    pub fn gexiv2_initialize() -> c_int;
 
     // GExiv2Metadata lifecycle management.
     pub fn gexiv2_metadata_new() -> *mut GExiv2Metadata;
     pub fn gexiv2_metadata_free(this: *mut GExiv2Metadata);
-    pub fn gexiv2_metadata_open_path(this: *mut GExiv2Metadata, path: *const c_char, error: *mut *mut GError) -> bool;
-    pub fn gexiv2_metadata_open_buf(Gthis: *mut GExiv2Metadata, data: *const u8, data_len: c_long, error: *mut *mut GError) -> bool;
-    pub fn gexiv2_metadata_save_file(this: *mut GExiv2Metadata, path: *const c_char, error: *mut *mut GError) -> bool;
+    pub fn gexiv2_metadata_open_path(this: *mut GExiv2Metadata, path: *const c_char, error: *mut *mut GError) -> c_int;
+    pub fn gexiv2_metadata_open_buf(Gthis: *mut GExiv2Metadata, data: *const u8, data_len: c_long, error: *mut *mut GError) -> c_int;
+    pub fn gexiv2_metadata_save_file(this: *mut GExiv2Metadata, path: *const c_char, error: *mut *mut GError) -> c_int;
 
     // Image information.
-    pub fn gexiv2_metadata_get_supports_exif(this: *mut GExiv2Metadata) -> bool;
-    pub fn gexiv2_metadata_get_supports_iptc(this: *mut GExiv2Metadata) -> bool;
-    pub fn gexiv2_metadata_get_supports_xmp(this: *mut GExiv2Metadata) -> bool;
+    pub fn gexiv2_metadata_get_supports_exif(this: *mut GExiv2Metadata) -> c_int;
+    pub fn gexiv2_metadata_get_supports_iptc(this: *mut GExiv2Metadata) -> c_int;
+    pub fn gexiv2_metadata_get_supports_xmp(this: *mut GExiv2Metadata) -> c_int;
     pub fn gexiv2_metadata_get_mime_type(this: *mut GExiv2Metadata) -> *const c_char;
     pub fn gexiv2_metadata_get_pixel_width(this: *mut GExiv2Metadata) -> c_int;
     pub fn gexiv2_metadata_get_pixel_height(this: *mut GExiv2Metadata) -> c_int;
 
     // Tag management.
-    pub fn gexiv2_metadata_has_tag(this: *mut GExiv2Metadata, tag: *const c_char) -> bool;
-    pub fn gexiv2_metadata_clear_tag(this: *mut GExiv2Metadata, tag: *const c_char) -> bool;
+    pub fn gexiv2_metadata_has_tag(this: *mut GExiv2Metadata, tag: *const c_char) -> c_int;
+    pub fn gexiv2_metadata_clear_tag(this: *mut GExiv2Metadata, tag: *const c_char) -> c_int;
     pub fn gexiv2_metadata_clear(this: *mut GExiv2Metadata);
-    pub fn gexiv2_metadata_has_exif(this: *mut GExiv2Metadata) -> bool;
+    pub fn gexiv2_metadata_has_exif(this: *mut GExiv2Metadata) -> c_int;
     pub fn gexiv2_metadata_clear_exif(this: *mut GExiv2Metadata);
     pub fn gexiv2_metadata_get_exif_tags(this: *mut GExiv2Metadata) -> *mut *mut c_char;
-    pub fn gexiv2_metadata_has_xmp(this: *mut GExiv2Metadata) -> bool;
+    pub fn gexiv2_metadata_has_xmp(this: *mut GExiv2Metadata) -> c_int;
     pub fn gexiv2_metadata_clear_xmp(this: *mut GExiv2Metadata);
     pub fn gexiv2_metadata_get_xmp_tags(this: *mut GExiv2Metadata) -> *mut *mut c_char;
-    pub fn gexiv2_metadata_has_iptc(this: *mut GExiv2Metadata) -> bool;
+    pub fn gexiv2_metadata_has_iptc(this: *mut GExiv2Metadata) -> c_int;
     pub fn gexiv2_metadata_clear_iptc(this: *mut GExiv2Metadata);
     pub fn gexiv2_metadata_get_iptc_tags(this: *mut GExiv2Metadata) -> *mut *mut c_char;
 
     // Tag data getters/setters.
     pub fn gexiv2_metadata_get_tag_string(this: *mut GExiv2Metadata, tag: *const c_char) -> *const c_char;
-    pub fn gexiv2_metadata_set_tag_string(this: *mut GExiv2Metadata, tag: *const c_char, value: *const c_char) -> bool;
+    pub fn gexiv2_metadata_set_tag_string(this: *mut GExiv2Metadata, tag: *const c_char, value: *const c_char) -> c_int;
     pub fn gexiv2_metadata_get_tag_interpreted_string(this: *mut GExiv2Metadata, tag: *const c_char) -> *const c_char;
     pub fn gexiv2_metadata_get_tag_multiple(this: *mut GExiv2Metadata, tag: *const c_char) -> *mut *mut c_char;
-    pub fn gexiv2_metadata_set_tag_multiple(this: *mut GExiv2Metadata, tag: *const c_char, values: *mut *const c_char) -> bool;
+    pub fn gexiv2_metadata_set_tag_multiple(this: *mut GExiv2Metadata, tag: *const c_char, values: *mut *const c_char) -> c_int;
     pub fn gexiv2_metadata_get_tag_long(this: *mut GExiv2Metadata, tag: *const c_char) -> c_long;
-    pub fn gexiv2_metadata_set_tag_long(this: *mut GExiv2Metadata, tag: *const c_char, value: c_long) -> bool;
-    pub fn gexiv2_metadata_get_exif_tag_rational(this: *mut GExiv2Metadata, tag: *const c_char, nom: *mut c_int, den: *mut c_int) -> bool;
-    pub fn gexiv2_metadata_set_exif_tag_rational(this: *mut GExiv2Metadata, tag: *const c_char, nom: c_int, den: c_int) -> bool;
+    pub fn gexiv2_metadata_set_tag_long(this: *mut GExiv2Metadata, tag: *const c_char, value: c_long) -> c_int;
+    pub fn gexiv2_metadata_get_exif_tag_rational(this: *mut GExiv2Metadata, tag: *const c_char, nom: *mut c_int, den: *mut c_int) -> c_int;
+    pub fn gexiv2_metadata_set_exif_tag_rational(this: *mut GExiv2Metadata, tag: *const c_char, nom: c_int, den: c_int) -> c_int;
 
     // Helper & convenience getters/setters.
     pub fn gexiv2_metadata_get_orientation(this: *mut GExiv2Metadata) -> Orientation;
     pub fn gexiv2_metadata_set_orientation(this: *mut GExiv2Metadata, orientation: Orientation);
-    pub fn gexiv2_metadata_get_exposure_time(this: *mut GExiv2Metadata, nom: *mut c_int, den: *mut c_int) -> bool;
+    pub fn gexiv2_metadata_get_exposure_time(this: *mut GExiv2Metadata, nom: *mut c_int, den: *mut c_int) -> c_int;
     pub fn gexiv2_metadata_get_fnumber(this: *mut GExiv2Metadata) -> c_double;
     pub fn gexiv2_metadata_get_focal_length(this: *mut GExiv2Metadata) -> c_double;
     pub fn gexiv2_metadata_get_iso_speed(this: *mut GExiv2Metadata) -> c_int;
@@ -130,24 +130,24 @@ extern {
     pub fn gexiv2_metadata_clear_comment(this: *mut GExiv2Metadata);
 
     // GPS-related functions.
-    pub fn gexiv2_metadata_get_gps_longitude(this: *mut GExiv2Metadata, longitude: *mut c_double) -> bool;
-    pub fn gexiv2_metadata_get_gps_latitude(this: *mut GExiv2Metadata, latitude: *mut c_double) -> bool;
-    pub fn gexiv2_metadata_get_gps_altitude(this: *mut GExiv2Metadata, altitude: *mut c_double) -> bool;
-    pub fn gexiv2_metadata_get_gps_info(this: *mut GExiv2Metadata, longitude: *mut c_double, latitude: *mut c_double, altitude: *mut c_double) -> bool;
-    pub fn gexiv2_metadata_set_gps_info(this: *mut GExiv2Metadata, longitude: c_double, latitude: c_double, altitude: c_double) -> bool;
+    pub fn gexiv2_metadata_get_gps_longitude(this: *mut GExiv2Metadata, longitude: *mut c_double) -> c_int;
+    pub fn gexiv2_metadata_get_gps_latitude(this: *mut GExiv2Metadata, latitude: *mut c_double) -> c_int;
+    pub fn gexiv2_metadata_get_gps_altitude(this: *mut GExiv2Metadata, altitude: *mut c_double) -> c_int;
+    pub fn gexiv2_metadata_get_gps_info(this: *mut GExiv2Metadata, longitude: *mut c_double, latitude: *mut c_double, altitude: *mut c_double) -> c_int;
+    pub fn gexiv2_metadata_set_gps_info(this: *mut GExiv2Metadata, longitude: c_double, latitude: c_double, altitude: c_double) -> c_int;
     pub fn gexiv2_metadata_delete_gps_info(this: *mut GExiv2Metadata);
 
     // Tag information functions.
-    pub fn gexiv2_metadata_is_exif_tag(tag: *const c_char) -> bool;
-    pub fn gexiv2_metadata_is_iptc_tag(tag: *const c_char) -> bool;
-    pub fn gexiv2_metadata_is_xmp_tag(tag: *const c_char) -> bool;
+    pub fn gexiv2_metadata_is_exif_tag(tag: *const c_char) -> c_int;
+    pub fn gexiv2_metadata_is_iptc_tag(tag: *const c_char) -> c_int;
+    pub fn gexiv2_metadata_is_xmp_tag(tag: *const c_char) -> c_int;
     pub fn gexiv2_metadata_get_tag_label(tag: *const c_char) -> *const c_char;
     pub fn gexiv2_metadata_get_tag_description(tag: *const c_char) -> *const c_char;
     pub fn gexiv2_metadata_get_tag_type(tag: *const c_char) -> *const c_char;
 
     // XMP namespace management.
-    pub fn gexiv2_metadata_register_xmp_namespace(name: *const c_char, prefix: *const c_char) -> bool;
-    pub fn gexiv2_metadata_unregister_xmp_namespace(name: *const c_char) -> bool;
+    pub fn gexiv2_metadata_register_xmp_namespace(name: *const c_char, prefix: *const c_char) -> c_int;
+    pub fn gexiv2_metadata_unregister_xmp_namespace(name: *const c_char) -> c_int;
     pub fn gexiv2_metadata_unregister_all_xmp_namespaces();
 
     // Logging
