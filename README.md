@@ -26,9 +26,13 @@ the [`rexiv2`][rexiv2] crate**.
 Documentation
 -------------
 
+Documentation is [available online][gexiv2-sys], but since these are just FFI
+bindings, it is minimal.
+
 [gexiv2’s APIs][gexiv2-api] may be a useful reference, along with [Exiv2’s
 API docs][exiv2-api].
 
+[gexiv2-sys]: https://felixcrux.com/files/doc/gexiv2_sys/
 [gexiv2-api]: https://git.gnome.org/browse/gexiv2/tree/gexiv2/gexiv2-metadata.h
 [exiv2-api]:  http://exiv2.org/doc/index.html
 
