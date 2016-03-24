@@ -1,6 +1,12 @@
 gexiv2-sys
 ==========
 
+[![Build Status](https://img.shields.io/travis/felixc/gexiv2-sys.svg)](https://travis-ci.org/felixc/gexiv2-sys)&nbsp;
+[![Crates.io Downloads](https://img.shields.io/crates/d/gexiv2-sys.svg)](https://crates.io/crates/gexiv2-sys)&nbsp;
+[![Crates.io Version](https://img.shields.io/crates/v/gexiv2-sys.svg)](https://crates.io/crates/gexiv2-sys)&nbsp;
+[![License](https://img.shields.io/crates/l/gexiv2-sys.svg)](https://github.com/felixc/gexiv2-sys/blob/master/LICENSE)&nbsp;
+
+
 Rust FFI declarations for gexiv2
 --------------------------------
 
@@ -15,8 +21,6 @@ the [`rexiv2`][rexiv2] crate**.
 [gexiv2]: https://wiki.gnome.org/Projects/gexiv2
 [exiv2]:  http://www.exiv2.org/
 [rexiv2]: https://github.com/felixc/rexiv2
-
-[![Build Status](https://img.shields.io/travis/felixc/gexiv2-sys.svg)](https://travis-ci.org/felixc/gexiv2-sys)
 
 
 Documentation
