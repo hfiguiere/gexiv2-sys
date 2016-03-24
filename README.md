@@ -9,12 +9,14 @@ which is a GObject-based wrapper around the [Exiv2][exiv2] library, which
 provides read and write access to the Exif, XMP, and IPTC metadata in media
 files.
 
-Only FFI declarations are provided here; for a usable Rust library, consider
-the [`rexiv2`][rexiv2] crate.
+Only FFI declarations are provided here; **for a usable Rust library, consider
+the [`rexiv2`][rexiv2] crate**.
 
 [gexiv2]: https://wiki.gnome.org/Projects/gexiv2
 [exiv2]:  http://www.exiv2.org/
 [rexiv2]: https://github.com/felixc/rexiv2
+
+[![Build Status](https://img.shields.io/travis/felixc/gexiv2-sys.svg)](https://travis-ci.org/felixc/gexiv2-sys)
 
 
 Documentation
