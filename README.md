@@ -16,7 +16,7 @@ provides read and write access to the Exif, XMP, and IPTC metadata in media
 files.
 
 Only FFI declarations are provided here; **for a usable Rust library, consider
-the [`rexiv2`][rexiv2] crate**.
+the [rexiv2][rexiv2] crate**.
 
 [gexiv2]: https://wiki.gnome.org/Projects/gexiv2
 [exiv2]:  http://www.exiv2.org/
@@ -37,22 +37,15 @@ API docs][exiv2-api].
 [exiv2-api]:  http://exiv2.org/doc/index.html
 
 
-Dependencies
-------------
+Setup & Dependencies
+--------------------
 
 Given that it links to gexiv2, and transitively to Exiv2, gexiv2-sys obviously
-depends on them. Only the library (e.g. `.so` or `.dll`) files are needed; not
-the headers or source code. You can download these dependencies from their
-download pages: [Exiv2][exiv2-dl]; [gexiv2][gexiv2-dl].
+depends on them. These libraries are not bundled with gexiv2-sys: you will need
+to install them separately.
 
-On a Linux system, you can typically install these dependencies through your
-package manager (look for packages with names like “libgexiv2-dev”). Mac OS X
-users may also have this option through unofficial package management systems.
-Note that to build gexiv2-sys from source you may need not just the library
-packages, but the “dev” versions of them as well.
-
-[exiv2-dl]:  http://www.exiv2.org/download.html
-[gexiv2-dl]: https://wiki.gnome.org/Projects/gexiv2/BuildingAndInstalling
+For full instructions on how to get started with gexiv2-sys, including how to
+install the prerequisite dependencies, refer to the [`SETUP`](SETUP.md) file.
 
 
 Optional Features
