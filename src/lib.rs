@@ -35,6 +35,7 @@ pub enum GExiv2Metadata {}
 
 /// Container for information about recoverable runtime errors.
 #[repr(C)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct GError {
     /// Part of the program from which the error originated.
     pub domain: u32,
@@ -46,7 +47,7 @@ pub struct GError {
 
 /// All the possible orientations for an image.
 #[repr(C)]
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
 pub enum Orientation {
     Unspecified,
     Normal,
@@ -59,15 +60,23 @@ pub enum Orientation {
     Rotate270,
 }
 
+impl Default for Orientation {
+    fn default() -> Orientation { Orientation::Unspecified }
+}
+
 /// Log levels.
 #[repr(C)]
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
 pub enum GExiv2LogLevel {
     DEBUG,
     INFO,
     WARN,
     ERROR,
     MUTE,
+}
+
+impl Default for GExiv2LogLevel {
+    fn default() -> GExiv2LogLevel { GExiv2LogLevel::ERROR }
 }
 
 /// Handler function that receives gexiv2 log messages and processes them as desired.
