@@ -70,14 +70,19 @@ a new dependency on the the [`bitflags`][bitflags] crate.
 [bitflags]: https://crates.io/crates/bitflags
 
 
-Contributing
-------------
+Contributions & Bug Reports
+---------------------------
 
 Contributions are gladly accepted, either through GitHub pull requests or by
 mailing patches to `felixc@felixcrux.com` (PGP key [8569B6311EE485F8][pgp-key]).
 
-By contributing, you are agreeing to make your contribution available under the
-same license terms as the rest of the project.
+**By contributing, you are agreeing to make your contribution available under
+the same license terms as the rest of the project.**
+
+Bug reports and feature requests can also be sent through GitHub Issues or by
+email, and are very welcome and appreciated.
+
+For more information, see the [`CONTRIBUTING`](CONTRIBUTING.md) file.
 
 [pgp-key]: http://hkps.pool.sks-keyservers.net/pks/lookup?op=vindex&search=0x8569B6311EE485F8
 
