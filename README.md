@@ -1,10 +1,18 @@
 gexiv2-sys
 ==========
 
-[![Build Status](https://img.shields.io/travis/felixc/gexiv2-sys.svg)](https://travis-ci.org/felixc/gexiv2-sys)&nbsp;
-[![Crates.io Downloads](https://img.shields.io/crates/d/gexiv2-sys.svg)](https://crates.io/crates/gexiv2-sys)&nbsp;
-[![Crates.io Version](https://img.shields.io/crates/v/gexiv2-sys.svg)](https://crates.io/crates/gexiv2-sys)&nbsp;
-[![License](https://img.shields.io/crates/l/gexiv2-sys.svg)](https://github.com/felixc/gexiv2-sys/blob/master/LICENSE)&nbsp;
+[![build-badge][]][build] &nbsp;
+[![downloads-badge][]][crates-io] &nbsp;
+[![version-badge][]][crates-io] &nbsp;
+[![license-badge][]][license] &nbsp;
+
+[build]: https://travis-ci.org/felixc/gexiv2-sys
+[build-badge]: https://img.shields.io/travis/felixc/gexiv2-sys.svg
+[crates-io]: https://crates.io/crates/gexiv2-sys
+[downloads-badge]: https://img.shields.io/crates/d/gexiv2-sys.svg
+[version-badge]: https://img.shields.io/crates/v/gexiv2-sys.svg
+[license]: https://github.com/felixc/gexiv2-sys/blob/master/LICENSE
+[license-badge]: https://img.shields.io/crates/l/gexiv2-sys.svg
 
 
 Rust FFI declarations for gexiv2
