@@ -52,6 +52,8 @@ Given that it links to gexiv2, and transitively to Exiv2, gexiv2-sys obviously
 depends on them. These libraries are not bundled with gexiv2-sys: you will need
 to install them separately.
 
+The oldest supported Rust compiler version is 1.8, released in April of 2016.
+
 For full instructions on how to get started with gexiv2-sys, including how to
 install the prerequisite dependencies, refer to the [`SETUP`](SETUP.md) file.
 
