@@ -5,12 +5,19 @@ rust:
   - beta
   - nightly
 matrix:
+  include:
+    - os: osx
+      osx_image: xcode8.2
+      rust: stable
   allow_failures:
     - rust: nightly
 addons:
   apt:
     packages:
-    - libgexiv2-dev
+      - libgexiv2-dev
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update         ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install gexiv2 ; fi
 notifications:
   email:
     on_success: never
