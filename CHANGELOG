@@ -1,5 +1,6 @@
 Unreleased
   * Update bitflags dependency to 0.7; requires at minimum Rust 1.8.
+  * Minor documentation improvements.
 
 2016-03-29 - v0.6.1
   * Types now implement several more useful traits.

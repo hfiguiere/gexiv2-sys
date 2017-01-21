@@ -90,6 +90,12 @@ libc = "0.2"
 (Note that the [libc][crates-libc] crate is listed as a dependency too: you will
 most likely need it in order to do anything useful with gexiv2-sys).
 
+To enable one of the optional features of the crate, specify it as follows:
+
+```toml
+gexiv2-sys = { version = "0.6", features = ["raw-tag-access"] }
+```
+
 Alternatively, if you’d like to work off of the bleeding edge (note that this is
 not recommended unless you’re actively developing on gexiv2-sys itself), you can
 depend directly on the Git repository using the line
