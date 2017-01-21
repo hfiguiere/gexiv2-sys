@@ -1,4 +1,4 @@
-// Copyright © 2015–2016 Felix A. Crux <felixc@felixcrux.com>
+// Copyright © 2015–2017 Felix A. Crux <felixc@felixcrux.com>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -205,3 +205,7 @@ extern {
     pub fn gexiv2_metadata_generate_xmp_packet(this: *mut GExiv2Metadata, xmp_format_flags: libc::c_ulong, padding: u32) -> *const c_char;
     pub fn gexiv2_metadata_get_xmp_packet(this: *mut GExiv2Metadata) -> *const c_char;
 }
+
+
+#[cfg(test)]
+mod test;
