@@ -16,24 +16,29 @@
 //! Basic tests for gexiv2.
 
 extern crate libc;
+extern crate tempdir;
 
 use std::ffi;
+use std::fs;
+use std::io::Write;
 use std::ptr;
+use std::slice;
 
 use super::*;
 
 
-static MINI_PNG: [u8; 67] = [137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0,
-                             0, 1, 0, 0, 0, 1, 8, 0, 0, 0, 0, 58, 126, 155, 85, 0, 0, 0, 10, 73,
-                             68, 65, 84, 8, 215, 99, 248, 15, 0, 1, 1, 1, 0, 27, 182, 238, 86, 0,
-                             0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130];
+static MINI_JPEG: &'static[u8] = &[255, 216, 255, 219, 00, 43, 00, 03, 02, 02, 02, 02, 02, 03, 02,
+    02, 02, 03, 03, 03, 03, 04, 06, 04, 04, 04, 04, 04, 08, 06, 06, 05, 06, 09, 08, 10, 10, 09, 08,
+    09, 09, 10, 12, 15, 12, 10, 11, 14, 11, 09, 09, 13, 11, 13, 14, 15, 10, 10, 11, 10, 10, 12, 12,
+    13, 12, 10, 13, 15, 10, 10, 10, 255, 201, 00, 11, 08, 00, 01, 00, 01, 01, 01, 11, 00, 255, 204,
+    00, 06, 00, 10, 10, 05, 255, 218, 00, 08, 01, 01, 00, 00, 63, 00, 210, 207, 20, 255, 217];
 
 unsafe fn make_new_metadata() -> *mut GExiv2Metadata {
     let mut err: *mut GError = ptr::null_mut();
     let metadata = gexiv2_metadata_new();
 
     let ok = gexiv2_metadata_open_buf(
-        metadata, MINI_PNG.as_ptr(), MINI_PNG.len() as libc::c_long, &mut err);
+        metadata, MINI_JPEG.as_ptr(), MINI_JPEG.len() as libc::c_long, &mut err);
     if ok != 1 {
         match ffi::CStr::from_ptr((*err).message).to_str() {
             Ok(v) => panic!(v.to_string()),
@@ -92,7 +97,7 @@ fn metadata_get_mime_type() {
         let meta = make_new_metadata();
         let result = gexiv2_metadata_get_mime_type(meta);
         let result = ffi::CStr::from_ptr(result).to_str().unwrap();
-        assert_eq!(result, "image/png");
+        assert_eq!(result, "image/jpeg");
     }
 }
 
@@ -176,7 +181,61 @@ fn metadata_get_tag_type() {
 }
 
 
-// Logging
+// EXIF thumbnail getter/setters.
+
+#[test]
+fn metadata_get_and_set_exif_thumbnail_from_buffer() {
+    unsafe {
+        let meta = make_new_metadata();
+        let mut thumb: *mut u8 = ptr::null_mut();
+        let mut thumb_size: libc::c_int = 0;
+        assert_eq!(gexiv2_metadata_get_exif_thumbnail(meta, &mut thumb, &mut thumb_size), 0);
+        gexiv2_metadata_set_exif_thumbnail_from_buffer(
+            meta, MINI_JPEG.as_ptr(), MINI_JPEG.len() as libc::c_int);
+        assert_eq!(gexiv2_metadata_get_exif_thumbnail(meta, &mut thumb, &mut thumb_size), 1);
+        assert_eq!(MINI_JPEG, slice::from_raw_parts(thumb, thumb_size as usize));
+    }
+}
+
+#[test]
+fn metadata_set_exif_thumbnail_from_file() {
+    unsafe {
+        let meta = make_new_metadata();
+
+        let tmp_dir = tempdir::TempDir::new("gexiv2_sys_tests").unwrap();
+        let tmp_file_path = tmp_dir.path().join("thumb.jpg");
+        let mut thumb_file = fs::File::create(tmp_file_path.clone()).unwrap();
+        thumb_file.write_all(MINI_JPEG).unwrap();
+        thumb_file.sync_all().unwrap();
+
+        let mut err: *mut GError = ptr::null_mut();
+        let c_str_path = ffi::CString::new(tmp_file_path.to_str().unwrap().as_bytes()).unwrap();
+        assert_eq!(
+            gexiv2_metadata_set_exif_thumbnail_from_file(meta, c_str_path.as_ptr(), &mut err), 1);
+
+        let mut thumb: *mut u8 = ptr::null_mut();
+        let mut thumb_size: libc::c_int = 0;
+        assert_eq!(gexiv2_metadata_get_exif_thumbnail(meta, &mut thumb, &mut thumb_size), 1);
+        assert_eq!(MINI_JPEG, slice::from_raw_parts(thumb, thumb_size as usize));
+    }
+}
+
+#[test]
+fn metadata_erase_exif_thumbnail() {
+    unsafe {
+        let meta = make_new_metadata();
+        let mut thumb: *mut u8 = ptr::null_mut();
+        let mut thumb_size: libc::c_int = 0;
+        gexiv2_metadata_set_exif_thumbnail_from_buffer(
+            meta, MINI_JPEG.as_ptr(), MINI_JPEG.len() as libc::c_int);
+        assert_eq!(gexiv2_metadata_get_exif_thumbnail(meta, &mut thumb, &mut thumb_size), 1);
+        gexiv2_metadata_erase_exif_thumbnail(meta);
+        assert_eq!(gexiv2_metadata_get_exif_thumbnail(meta, &mut thumb, &mut thumb_size), 0);
+    }
+}
+
+
+// Logging.
 
 #[test]
 fn log_get_and_set_level() {

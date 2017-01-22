@@ -37,6 +37,9 @@ glib-sys = { version = "0.3", optional = true }
 [build-dependencies]
 pkg-config = "0.3"
 
+[dev-dependencies]
+tempdir = "0.3"
+
 [features]
 raw-tag-access = ["glib-sys"]
 xmp-packet-access = ["bitflags"]

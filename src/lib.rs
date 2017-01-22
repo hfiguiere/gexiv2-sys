@@ -154,12 +154,18 @@ extern {
     pub fn gexiv2_metadata_get_tag_description(tag: *const c_char) -> *const c_char;
     pub fn gexiv2_metadata_get_tag_type(tag: *const c_char) -> *const c_char;
 
+    // Exif thumbnail getter/setters.
+    pub fn gexiv2_metadata_get_exif_thumbnail(this: *mut GExiv2Metadata, buffer: *mut *mut u8, size: *mut c_int) -> c_int;
+    pub fn gexiv2_metadata_set_exif_thumbnail_from_file(this: *mut GExiv2Metadata, path: *const c_char, error: *mut *mut GError) -> c_int;
+    pub fn gexiv2_metadata_set_exif_thumbnail_from_buffer(this: *mut GExiv2Metadata, buffer: *const u8, size: c_int);
+    pub fn gexiv2_metadata_erase_exif_thumbnail(this: *mut GExiv2Metadata);
+
     // XMP namespace management.
     pub fn gexiv2_metadata_register_xmp_namespace(name: *const c_char, prefix: *const c_char) -> c_int;
     pub fn gexiv2_metadata_unregister_xmp_namespace(name: *const c_char) -> c_int;
     pub fn gexiv2_metadata_unregister_all_xmp_namespaces();
 
-    // Logging
+    // Logging.
     pub fn gexiv2_log_get_default_handler() -> GExiv2LogHandler;
     pub fn gexiv2_log_get_handler() -> GExiv2LogHandler;
     pub fn gexiv2_log_set_handler(handler: GExiv2LogHandler);
