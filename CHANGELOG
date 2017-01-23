@@ -1,36 +1,37 @@
-Unreleased
+2017-01-23 - v0.7.0
+  * Add support for working with Exif thumbnails.
   * Update bitflags dependency to 0.7; requires at minimum Rust 1.8.
-  * Minor documentation improvements.
+  * Documentation and sample code improvements.
 
 2016-03-29 - v0.6.1
   * Types now implement several more useful traits.
   * Setup instructions now included in bundled crate.
 
 2016-03-19 - v0.6.0
-  * Fixed FFI declarations from using Rust bools to c_ints (breaking change).
-  * Added optional support for accessing the XML XMP packet.
-  * Added optional support for reading raw tag values.
+  * Fix FFI declarations from using Rust bools to c_ints (breaking change).
+  * Add optional support for accessing the XML XMP packet.
+  * Add optional support for reading raw tag values.
 
 2015-11-09 - v0.5.0
-  * Updated libc dependency version to 0.2.
+  * Update libc dependency version to 0.2.
 
 2015-09-13 - v0.4.0
-  * Corrected mutability of some pointers (breaking change).
-  * Future-proofing representation of GExiv2Metadata against upcoming lint.
+  * Correct mutability of some pointers (breaking change).
+  * Future-proof representation of GExiv2Metadata against upcoming lint.
 
 2015-09-06 - v0.3.0
-  * Added declarations for working with gexiv2's logging system.
+  * Add declarations for working with gexiv2's logging system.
   * Slightly improved documentation.
 
 2015-04-03 - v0.2.0
-  * Updated to work with Rust 1.0.0-beta.
-  * Added Clone trait to Orientation.
-  * Added two general gexiv2 management function declarations.
-  * Added declarations for per-field GPS info accessors.
-  * Added declarations for convenience getter/setters for comment metadata.
+  * Update to work with Rust 1.0.0-beta.
+  * Add Clone trait to Orientation.
+  * Add two general gexiv2 management function declarations.
+  * Add declarations for per-field GPS info accessors.
+  * Add declarations for convenience getter/setters for comment metadata.
 
 2015-03-29 - v0.1.1
-  * Switched to the crates.io version of libc (new dependency).
+  * Switch to the crates.io version of libc (new dependency).
 
 2015-03-02 - v0.1.0
   * Initial version split off from rexiv2.

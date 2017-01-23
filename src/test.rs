@@ -181,7 +181,7 @@ fn metadata_get_tag_type() {
 }
 
 
-// EXIF thumbnail getter/setters.
+// Exif thumbnail getter/setters.
 
 #[test]
 fn metadata_get_and_set_exif_thumbnail_from_buffer() {

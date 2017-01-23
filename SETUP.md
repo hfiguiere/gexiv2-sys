@@ -87,7 +87,7 @@ this by adding a dependency on gexiv2-sys in your crate’s `Cargo.toml` file:
 
 ```toml
 [dependencies]
-gexiv2-sys = "0.6"
+gexiv2-sys = "0.7"
 libc = "0.2"
 ```
 
@@ -97,7 +97,7 @@ most likely need it in order to do anything useful with gexiv2-sys).
 To enable one of the optional features of the crate, specify it as follows:
 
 ```toml
-gexiv2-sys = { version = "0.6", features = ["raw-tag-access"] }
+gexiv2-sys = { version = "0.7", features = ["raw-tag-access"] }
 ```
 
 Alternatively, if you’d like to work off of the bleeding edge (note that this is
