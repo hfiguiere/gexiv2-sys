@@ -15,6 +15,7 @@ documentation = "https://felixcrux.com/files/doc/gexiv2_sys/"
 homepage = "https://github.com/felixc/gexiv2-sys"
 repository = "https://github.com/felixc/gexiv2-sys"
 keywords = ["metadata", "exif", "iptc", "xmp", "photo"]
+categories = ["external-ffi-bindings", "multimedia::images"]
 readme = "README.md"
 links = "gexiv2"
 build = "build.rs"
