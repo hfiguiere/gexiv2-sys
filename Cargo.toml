@@ -31,7 +31,7 @@ include = [
 ]
 
 [dependencies]
-libc = "0.2"
+libc = "0.2, < 0.2.34"
 bitflags = { version = "0.7", optional = true}
 glib-sys = { version = "0.3", optional = true }
 
