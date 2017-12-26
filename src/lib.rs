@@ -188,18 +188,15 @@ extern {
 extern crate bitflags;
 
 #[cfg(feature = "xmp-packet-access")]
-/// Namespace for XMP packet formatting constants.
-pub mod xmp_packet_fmt {
-    bitflags! {
-        pub flags GExiv2XmpFormatFlags: u64 {
-            const OMIT_PACKET_WRAPPER   = 0x0010,
-            const READ_ONLY_PACKET      = 0x0020,
-            const USE_COMPACT_FORMAT    = 0x0040,
-            const INCLUDE_THUMBNAIL_PAD = 0x0100,
-            const EXACT_PACKET_LENGTH   = 0x0200,
-            const WRITE_ALIAS_COMMENTS  = 0x0400,
-            const OMIT_ALL_FORMATTING   = 0x0800,
-        }
+bitflags! {
+    pub struct GExiv2XmpFormatFlags: u64 {
+        const OMIT_PACKET_WRAPPER   = 0x0010;
+        const READ_ONLY_PACKET      = 0x0020;
+        const USE_COMPACT_FORMAT    = 0x0040;
+        const INCLUDE_THUMBNAIL_PAD = 0x0100;
+        const EXACT_PACKET_LENGTH   = 0x0200;
+        const WRITE_ALIAS_COMMENTS  = 0x0400;
+        const OMIT_ALL_FORMATTING   = 0x0800;
     }
 }
 

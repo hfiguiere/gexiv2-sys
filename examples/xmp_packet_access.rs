@@ -22,8 +22,8 @@ mod example {
 
             gexiv2::gexiv2_metadata_generate_xmp_packet(
                 metadata,
-                (gexiv2::xmp_packet_fmt::OMIT_PACKET_WRAPPER |
-                 gexiv2::xmp_packet_fmt::OMIT_ALL_FORMATTING).bits(),
+                (gexiv2::GExiv2XmpFormatFlags::OMIT_PACKET_WRAPPER |
+                 gexiv2::GExiv2XmpFormatFlags::OMIT_ALL_FORMATTING).bits(),
                 1);
             let packet = gexiv2::gexiv2_metadata_get_xmp_packet(metadata);
             println!("{}", ffi::CStr::from_ptr(packet).to_str().unwrap());
