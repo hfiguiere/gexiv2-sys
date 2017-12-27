@@ -129,6 +129,10 @@ extern {
     // Helper & convenience getters/setters.
     pub fn gexiv2_metadata_get_orientation(this: *mut GExiv2Metadata) -> Orientation;
     pub fn gexiv2_metadata_set_orientation(this: *mut GExiv2Metadata, orientation: Orientation);
+    pub fn gexiv2_metadata_get_metadata_pixel_width(this: *mut GExiv2Metadata) -> c_int;
+    pub fn gexiv2_metadata_get_metadata_pixel_height(this: *mut GExiv2Metadata) -> c_int;
+    pub fn gexiv2_metadata_set_metadata_pixel_width(this: *mut GExiv2Metadata, width: c_int);
+    pub fn gexiv2_metadata_set_metadata_pixel_height(this: *mut GExiv2Metadata, height: c_int);
     pub fn gexiv2_metadata_get_exposure_time(this: *mut GExiv2Metadata, nom: *mut c_int, den: *mut c_int) -> c_int;
     pub fn gexiv2_metadata_get_fnumber(this: *mut GExiv2Metadata) -> c_double;
     pub fn gexiv2_metadata_get_focal_length(this: *mut GExiv2Metadata) -> c_double;

@@ -118,6 +118,27 @@ fn metadata_get_pixel_height() {
 }
 
 
+// Helper & convenience getters/setters.
+
+#[test]
+fn metadata_set_and_get_metadata_pixel_width() {
+    unsafe {
+        let meta = make_new_metadata();
+        gexiv2_metadata_set_metadata_pixel_width(meta, 2);
+        assert_eq!(gexiv2_metadata_get_metadata_pixel_width(meta), 2);
+    }
+}
+
+#[test]
+fn metadata_set_and_get_metadata_pixel_height() {
+    unsafe {
+        let meta = make_new_metadata();
+        gexiv2_metadata_set_metadata_pixel_width(meta, 2);
+        assert_eq!(gexiv2_metadata_get_metadata_pixel_height(meta), 2);
+    }
+}
+
+
 // Tag information functions.
 
 #[test]
