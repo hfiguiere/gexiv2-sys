@@ -26,7 +26,7 @@
 
 extern crate libc;
 
-use self::libc::{c_char, c_int, c_double, c_long};
+use self::libc::{c_char, c_double, c_int, c_long};
 
 /// An opaque structure that serves as a container for a media file's metadata.
 ///
@@ -42,7 +42,7 @@ pub struct GError {
     /// Identifier for the error that occurred.
     pub code: c_int,
     /// Human-readable description of the problem.
-    pub message: *const c_char
+    pub message: *const c_char,
 }
 
 /// All the possible orientations for an image.

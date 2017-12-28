@@ -21,8 +21,10 @@ fn main() {
     match pkg_config::find_library("gexiv2") {
         Ok(_) => return,
         Err(e) => {
-            println!("\nThe gexiv2 library was not found by pkg-config on your system.\n\n\
-                      Consult the README.md file for suggestions on how to acquire it.");
+            println!(
+                "\nThe gexiv2 library was not found by pkg-config on your system.\n\n\
+                 Consult the README.md file for suggestions on how to acquire it."
+            );
             panic!(e);
         }
     }
