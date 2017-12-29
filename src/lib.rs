@@ -26,11 +26,13 @@
 
 extern crate libc;
 
-use self::libc::{c_char, c_double, c_int, c_long, c_uint};
+use self::libc::{c_char, c_double, c_int, c_long, c_uchar, c_uint};
 
 /// An opaque structure that serves as a container for a media file's metadata.
 ///
 /// You can only create one via [`gexiv2_metadata_new()`](fn.gexiv2_metadata_new.html).
+///
+/// Be sure to free it after use with [`gexiv2_metadata_free()`](fn.gexiv2_metadata_free.html).
 pub enum GExiv2Metadata {}
 
 /// An opaque container structure for information about a media file preview image.
@@ -38,6 +40,14 @@ pub enum GExiv2Metadata {}
 /// You can only get hold of one (or, rather, a null-terminated array of them) via
 /// [`gexiv2_metadata_get_preview_properties()`](fn.gexiv2_metadata_get_preview_properties.html).
 pub enum GExiv2PreviewProperties {}
+
+/// An opaque container structure for a media file preview image.
+///
+/// You can only get one via
+/// [`gexiv2_metadata_get_preview_image()`](fn.gexiv2_metadata_get_preview_image.html).
+///
+/// Be sure to free it with [`gexiv2_preview_image_free()`](fn.gexiv2_preview_image_free.html).
+pub enum GExiv2PreviewImage {}
 
 /// Container for information about recoverable runtime errors.
 #[repr(C)]
@@ -176,6 +186,16 @@ extern {
     pub fn gexiv2_preview_properties_get_size(this: *mut GExiv2PreviewProperties) -> c_uint;
     pub fn gexiv2_preview_properties_get_width(this: *mut GExiv2PreviewProperties) -> c_uint;
     pub fn gexiv2_preview_properties_get_height(this: *mut GExiv2PreviewProperties) -> c_uint;
+
+    // Preview images.
+    pub fn gexiv2_metadata_get_preview_image(this: *mut GExiv2Metadata, props: *mut GExiv2PreviewProperties) -> *mut GExiv2PreviewImage;
+    pub fn gexiv2_preview_image_free(this: *mut GExiv2PreviewImage);
+    pub fn gexiv2_preview_image_get_data(this: *mut GExiv2PreviewImage, size: *mut c_uint) -> *const c_uchar;
+    pub fn gexiv2_preview_image_get_mime_type(this: *mut GExiv2PreviewImage) -> *const c_char;
+    pub fn gexiv2_preview_image_get_extension(this: *mut GExiv2PreviewImage) -> *const c_char;
+    pub fn gexiv2_preview_image_get_width(this: *mut GExiv2PreviewImage) -> c_uint;
+    pub fn gexiv2_preview_image_get_height(this: *mut GExiv2PreviewImage) -> c_uint;
+    pub fn gexiv2_preview_image_write_file(this: *mut GExiv2PreviewImage, path: *const c_char) -> c_long;
 
     // XMP namespace management.
     pub fn gexiv2_metadata_register_xmp_namespace(name: *const c_char, prefix: *const c_char) -> c_int;
