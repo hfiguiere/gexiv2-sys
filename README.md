@@ -26,9 +26,15 @@ files.
 Only FFI declarations are provided here; **for a usable Rust library, consider
 the [rexiv2][rexiv2] crate**.
 
+This project is considered “complete” — i.e. all the functionality that has been
+planned has been added (well, [almost][feature-issues]!), and no new development
+work is expected/planned. This doesn’t mean it’s abandoned or unsupported: bug
+reports and pull requests are still gladly welcomed and will be addressed.
+
 [gexiv2]: https://wiki.gnome.org/Projects/gexiv2
 [exiv2]:  http://www.exiv2.org/
 [rexiv2]: https://github.com/felixc/rexiv2
+[feature-issues]: https://github.com/felixc/gexiv2-sys/issues?q=is%3Aissue+is%3Aopen+label%3Afeature
 
 
 Documentation
