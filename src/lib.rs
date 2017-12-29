@@ -26,12 +26,18 @@
 
 extern crate libc;
 
-use self::libc::{c_char, c_double, c_int, c_long};
+use self::libc::{c_char, c_double, c_int, c_long, c_uint};
 
 /// An opaque structure that serves as a container for a media file's metadata.
 ///
 /// You can only create one via [`gexiv2_metadata_new()`](fn.gexiv2_metadata_new.html).
 pub enum GExiv2Metadata {}
+
+/// An opaque container structure for information about a media file preview image.
+///
+/// You can only get hold of one (or, rather, a null-terminated array of them) via
+/// [`gexiv2_metadata_get_preview_properties()`](fn.gexiv2_metadata_get_preview_properties.html).
+pub enum GExiv2PreviewProperties {}
 
 /// Container for information about recoverable runtime errors.
 #[repr(C)]
@@ -162,6 +168,14 @@ extern {
     pub fn gexiv2_metadata_set_exif_thumbnail_from_file(this: *mut GExiv2Metadata, path: *const c_char, error: *mut *mut GError) -> c_int;
     pub fn gexiv2_metadata_set_exif_thumbnail_from_buffer(this: *mut GExiv2Metadata, buffer: *const u8, size: c_int);
     pub fn gexiv2_metadata_erase_exif_thumbnail(this: *mut GExiv2Metadata);
+
+    // Preview image properties.
+    pub fn gexiv2_metadata_get_preview_properties(this: *mut GExiv2Metadata) -> *mut *mut GExiv2PreviewProperties;
+    pub fn gexiv2_preview_properties_get_mime_type(this: *mut GExiv2PreviewProperties) -> *const c_char;
+    pub fn gexiv2_preview_properties_get_extension(this: *mut GExiv2PreviewProperties) -> *const c_char;
+    pub fn gexiv2_preview_properties_get_size(this: *mut GExiv2PreviewProperties) -> c_uint;
+    pub fn gexiv2_preview_properties_get_width(this: *mut GExiv2PreviewProperties) -> c_uint;
+    pub fn gexiv2_preview_properties_get_height(this: *mut GExiv2PreviewProperties) -> c_uint;
 
     // XMP namespace management.
     pub fn gexiv2_metadata_register_xmp_namespace(name: *const c_char, prefix: *const c_char) -> c_int;
