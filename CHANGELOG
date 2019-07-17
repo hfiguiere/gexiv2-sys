@@ -1,3 +1,7 @@
+2019-07-16 - v1.1.0
+  * Require rustc 1.31 at least to build, using the 2018 language edition.
+  * Internal dependency upgrades.
+
 2017-12-29 - v1.0.0
   * Add support for preview property and preview image functions.
   * This wraps up the last of the planned features to support -- we're at 1.0!
