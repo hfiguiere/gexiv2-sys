@@ -20,6 +20,8 @@ readme = "README.md"
 links = "gexiv2"
 build = "build.rs"
 
+edition = "2018"
+
 include = [
   "Cargo.toml",
   "README.md",
