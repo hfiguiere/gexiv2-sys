@@ -17,7 +17,7 @@ mod example {
 
     pub fn example() {
         unsafe {
-            let metadata = ::open_buf::make_new_metadata();
+            let metadata = crate::open_buf::make_new_metadata();
 
             let tag = ffi::CString::new("Exif.Image.ImageDescription").unwrap();
             let tag_value = ffi::CString::new("Raw Tag Access Example").unwrap();

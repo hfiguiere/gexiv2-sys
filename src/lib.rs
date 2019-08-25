@@ -1,4 +1,4 @@
-// Copyright © 2015–2017 Felix A. Crux <felixc@felixcrux.com>
+// Copyright © 2015–2019 Felix A. Crux <felixc@felixcrux.com> and contributors
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -217,7 +217,7 @@ extern crate glib_sys as glib;
 
 #[cfg(feature = "raw-tag-access")]
 extern {
-    pub fn gexiv2_metadata_get_tag_raw(this: *mut ::GExiv2Metadata, tag: *const libc::c_char) -> *mut glib::GBytes;
+    pub fn gexiv2_metadata_get_tag_raw(this: *mut GExiv2Metadata, tag: *const libc::c_char) -> *mut glib::GBytes;
 }
 
 

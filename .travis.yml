@@ -25,6 +25,10 @@ script:
       fi
       cargo build --verbose
       cargo test --verbose
+      cargo build --features raw-tag-access,xmp-packet-access
+      cargo run --example open_buf
+      cargo run --features raw-tag-access --example raw_tag_access
+      cargo run --features xmp-packet-access --example xmp_packet_access
 notifications:
   email:
     on_success: never

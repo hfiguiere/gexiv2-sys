@@ -1,4 +1,4 @@
-// Copyright © 2017 Felix A. Crux <felixc@felixcrux.com>
+// Copyright © 2017-2019 Felix A. Crux <felixc@felixcrux.com> and contributors
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
