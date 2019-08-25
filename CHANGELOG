@@ -1,3 +1,6 @@
+2019-08-25 - v1.1.1
+  * Fix raw_tag_access optional feature code broken in 1.1.0.
+
 2019-07-16 - v1.1.0
   * Require rustc 1.31 at least to build, using the 2018 language edition.
   * Internal dependency upgrades.
