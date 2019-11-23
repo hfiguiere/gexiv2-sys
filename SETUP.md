@@ -48,7 +48,14 @@ with the Homebrew package manager, using the [gexiv2][gexiv2-brew] formula:
 
 ```shell
 brew update
-brew install gexiv2
+brew install gexiv2 pkg-config
+```
+
+For the build to succeed, you will have to tell `pkg-config` where Homebrew
+installed some relevant libraries, using:
+
+```shell
+export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 ```
 
 It may also be possible to install dependencies via MacPorts, using the
