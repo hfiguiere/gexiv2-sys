@@ -1,3 +1,6 @@
+2020-07-12 - v1.1.2
+  * Internal dependency upgrades.
+
 2019-08-25 - v1.1.1
   * Fix raw_tag_access optional feature code broken in 1.1.0.
 
