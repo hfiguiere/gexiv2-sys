@@ -1,4 +1,4 @@
-// Copyright © 2015 Felix A. Crux <felixc@felixcrux.com>
+// Copyright © 2015-2022 Felix A. Crux <felixc@felixcrux.com>
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ fn main() {
                 "\nThe gexiv2 library was not found by pkg-config on your system.\n\n\
                  Consult the README.md file for suggestions on how to acquire it."
             );
-            panic!(e);
+            panic!("{}", e);
         }
     }
 }

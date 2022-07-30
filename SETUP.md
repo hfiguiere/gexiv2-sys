@@ -94,7 +94,7 @@ this by adding a dependency on gexiv2-sys in your crate’s `Cargo.toml` file:
 
 ```toml
 [dependencies]
-gexiv2-sys = "0.7"
+gexiv2-sys = "1.2"
 libc = "0.2"
 ```
 
@@ -104,7 +104,7 @@ most likely need it in order to do anything useful with gexiv2-sys).
 To enable one of the optional features of the crate, specify it as follows:
 
 ```toml
-gexiv2-sys = { version = "0.7", features = ["raw-tag-access"] }
+gexiv2-sys = { version = "1.2", features = ["raw-tag-access"] }
 ```
 
 Alternatively, if you’d like to work off of the bleeding edge (note that this is
@@ -121,38 +121,11 @@ or on a local copy, using the `path` option:
 gexiv2-sys = { path = "../gexiv2-sys" }  # Or wherever your copy is located
 ```
 
-Now you can import and use the functions defined in gexiv2-sys like this:
+Now you can import and use the functions defined in gexiv2-sys. Check the
+[`examples` directory][examples] for sample code.
 
-```rust
-extern crate gexiv2_sys as gexiv2;
-extern crate libc;
-
-use std::ffi;
-use std::ptr;
-
-fn main() {
-    unsafe {
-        let metadata = gexiv2::gexiv2_metadata_new();
-        let mut err: *mut gexiv2::GError = ptr::null_mut();
-        let path = ffi::CString::new("example.jpg").unwrap();
-
-        let ok = gexiv2::gexiv2_metadata_open_path(
-            metadata, path.as_ptr(), &mut err);
-        if ok != 1 {
-            match ffi::CStr::from_ptr((*err).message).to_str() {
-                Ok(v) => panic!(v.to_owned()),
-                Err(_) => panic!("Unknown error".to_owned())
-            }
-        }
-
-        let c_str = gexiv2::gexiv2_metadata_get_mime_type(metadata);
-        println!("{:?}", ffi::CStr::from_ptr(c_str).to_str());
-
-        gexiv2::gexiv2_metadata_free(metadata);
-    }
-}
-```
 
 [crates-gexiv2-sys]: https://crates.io/crates/gexiv2-sys
 [crates-libc]: https://crates.io/crates/libc
 [rexiv2]: https://github.com/felixc/rexiv2
+[examples]: https://github.com/felixc/gexiv2-sys/tree/main/examples

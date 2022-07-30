@@ -1,4 +1,4 @@
-// Copyright © 2017-2019 Felix A. Crux <felixc@felixcrux.com> and contributors
+// Copyright © 2017-2022 Felix A. Crux <felixc@felixcrux.com> and contributors
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
 //! Basic tests for gexiv2.
 
 extern crate libc;
-extern crate tempdir;
+extern crate tempfile;
 
 use std::ffi;
 use std::fs;
@@ -47,7 +47,7 @@ unsafe fn make_new_metadata() -> *mut GExiv2Metadata {
     );
     if ok != 1 {
         match ffi::CStr::from_ptr((*err).message).to_str() {
-            Ok(v) => panic!(v.to_string()),
+            Ok(v) => panic!("{}", v.to_string()),
             Err(_) => panic!("Unknown error"),
         }
     }
@@ -223,7 +223,7 @@ fn metadata_set_exif_thumbnail_from_file() {
     unsafe {
         let meta = make_new_metadata();
 
-        let tmp_dir = tempdir::TempDir::new("gexiv2_sys_tests").unwrap();
+        let tmp_dir = tempfile::tempdir().unwrap();
         let tmp_file_path = tmp_dir.path().join("thumb.jpg");
         let mut thumb_file = fs::File::create(tmp_file_path.clone()).unwrap();
         thumb_file.write_all(MINI_JPEG).unwrap();

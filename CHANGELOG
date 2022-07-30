@@ -1,3 +1,8 @@
+2022-07-30 - v1.2.0
+  * Internal dependency updates.
+  * Adopt 2021 language edition.
+  * Change minimum supported rustc version to 1.56.
+
 2020-07-12 - v1.1.2
   * Internal dependency upgrades.
 

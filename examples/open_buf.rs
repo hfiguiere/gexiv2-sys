@@ -27,7 +27,7 @@ pub unsafe fn make_new_metadata() -> *mut gexiv2::GExiv2Metadata {
     );
     if ok != 1 {
         match ffi::CStr::from_ptr((*err).message).to_str() {
-            Ok(v) => panic!(v.to_string()),
+            Ok(v) => panic!("{}", v.to_string()),
             Err(_) => panic!("Unknown error"),
         }
     }

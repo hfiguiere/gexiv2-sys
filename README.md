@@ -18,10 +18,9 @@ gexiv2-sys
 Rust FFI declarations for gexiv2
 --------------------------------
 
-This library provides Rust FFI declarations for the [gexiv2][gexiv2] library,
-which is a GObject-based wrapper around the [Exiv2][exiv2] library, which
-provides read and write access to the Exif, XMP, and IPTC metadata in media
-files.
+This crate provides Rust FFI declarations for the [gexiv2][gexiv2] library,
+which is a GObject-based wrapper around [Exiv2][exiv2], which provides read and
+write access to the Exif, XMP, and IPTC metadata in media files.
 
 Only FFI declarations are provided here; **for a usable Rust library, consider
 the [rexiv2][rexiv2] crate**.
@@ -58,8 +57,7 @@ Given that it links to gexiv2, and transitively to Exiv2, gexiv2-sys obviously
 depends on them. These libraries are not bundled with gexiv2-sys: you will need
 to install them separately.
 
-The oldest supported `rustc` compiler is the 1.31 version, with the 2018 edition
-of the language.
+The minimum supported `rustc` version is 1.56.
 
 For full instructions on how to get started with gexiv2-sys, including how to
 install the prerequisite dependencies, refer to the [`SETUP`](SETUP.md) file.
