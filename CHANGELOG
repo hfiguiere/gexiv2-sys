@@ -1,3 +1,6 @@
+2023-01-07 - v1.3.0
+  * Update minimum supported Rust version to 1.63.
+
 2022-07-30 - v1.2.0
   * Internal dependency updates.
   * Adopt 2021 language edition.
