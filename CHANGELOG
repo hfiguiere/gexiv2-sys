@@ -1,3 +1,6 @@
+2023-01-09 - v1.4.0
+  * Now supports `gexiv2_metadata_from_app1_segment`, thanks to Hubert Figuière.
+
 2023-01-07 - v1.3.0
   * Update minimum supported Rust version to 1.63.
 
